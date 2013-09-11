@@ -1,0 +1,32 @@
+<div>
+
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+           Revision History
+        </div>
+
+        <!-- Table -->
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Revision ID</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="revision in RevisionHistory">
+                <td>{{revision.dRevLabel}}</td>
+                <td>{{revision.dInDate | date:medium}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+
+
+
+</div>

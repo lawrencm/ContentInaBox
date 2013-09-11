@@ -1,0 +1,36 @@
+<div>
+
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+           Renditions
+        </div>
+
+        <!-- Table -->
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>File Size</th>
+            </tr>
+            </thead>
+            <tbody>
+
+
+            <tr ng-repeat="rendition in Renditions">
+                <td>{{rendition.extRenditionName}}</td>
+                <td>{{rendition.extRenditionFileType}}</td>
+                <td>{{rendition.extRenditionFileSize | prettyFileSize}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+
+
+
+</div>
