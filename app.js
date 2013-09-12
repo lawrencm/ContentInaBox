@@ -15,6 +15,9 @@
 //STATIC VARS
 
 //list of items in order yto display in small metadata subset
+
+"use strict";
+
 var METADATA_SUBSET_SMALL = ['dDocTitle', 'dDocName', 'dDocAuthor', 'dInDate', 'dFormat'];
 
 
@@ -26,17 +29,20 @@ contentInaBox.factory('$ucmapi', function ($rootScope, $http) {
 
 
     var convertResultSets = function (data) {
+
+        console.log(data);
+
         var rs = {};
-        for (i in data.ResultSets) {
+        for (var i in data.ResultSets) {
             rs[i] = [];
 
 
             //loop over the rows
-            for (r = 0; r < data.ResultSets[i].rows.length; r++) {
+            for (var r = 0; r < data.ResultSets[i].rows.length; r++) {
                 var row = {};
 
                 //loop over tyhe field keys and creat an object
-                for (k = 0; k < data.ResultSets[i].fields.length; k++) {
+                for (var k = 0; k < data.ResultSets[i].fields.length; k++) {
                     var key = data.ResultSets[i].fields[k];
                     row[key.name] = data.ResultSets[i].rows[r][k];
 //                    console.log(row);
@@ -132,7 +138,19 @@ contentInaBox.service('dynamicJS', [
 
 //rootscope controller
 contentInaBox.controller("contentInaBoxCtrl", function ($scope) {
-    $scope.METADATA_SUBSET = ['dDocTitle', 'dDocAuthor']
+    $scope.METADATA_SUBSET = ['dDocTitle', 'dDocAuthor'] ;
+
+
+
+
+
+$scope.someData = "Data to be dragged";
+
+    //for handling the data as passed after the object is dropped
+    $scope.fnOnDrop = function(jsonData){
+        //do something useful with the data here.
+    };
+
 });
 
 contentInaBox.directive('getMetadefs', ['$ucmapi', function () {
@@ -172,6 +190,100 @@ contentInaBox.directive('getMetadefs', ['$ucmapi', function () {
     };
 }]);
 
+contentInaBox.directive('pageManager', ['$ucmapi', function(){
+    // Runs during compile
+    return {
+        // name: '',
+        // priority: 1,
+        // terminal: true,
+        // scope: {}, // {} = isolate, true = child, false/undefined = no change
+        // cont­rol­ler: function($scope, $element, $attrs, $transclue) {},
+
+        controller: function($scope,$element,$attrs){
+                
+                var template = "/templates/search.html";
+                $scope.switchMainTemplate = function(){
+                    return template;
+                }
+
+                $scope.loadPage = function(s){
+                    console.log("loading page: " + s);
+                    switch (s){
+                        case "search":
+                            template = "/templates/search.html";
+                            break;
+                        case "docInfo":
+                            template = "/templates/doc-info.html";
+                            break;
+                        default:
+                            break;
+                    }
+                    $scope.switchMainTemplate();
+                };
+        },
+
+        // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
+        // restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
+        template: '<div ng-include="switchMainTemplate()"></div>',
+        // templateUrl: '',
+        // replace: true,
+        // transclude: true,
+        // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
+        link: function($scope, iElm, iAttrs, controller) {
+            
+        }
+    };
+}]);
+
+
+contentInaBox.directive('simpleSearch', ['$ucmapi', function(){
+    // Runs during compile
+    return {
+        // name: '',
+        // priority: 1,
+        // terminal: true,
+        // scope: {}, // {} = isolate, true = child, false/undefined = no change
+        controller: function($scope,$ucmapi, $element, $attrs) {
+            $scope.qs = "";
+            function updateSearch(){
+                var opts = {
+                    IdcService:"GET_SEARCH_RESULTS",
+                    SortField:"dInDate",
+                    SortOrder:"Desc",
+                    ResultCount:20,
+                    QueryText:"<qsch>" + $scope.qs + "</qsch>",
+                    ftx:1,
+                    SearchQueryFormat:"Universal",
+                    MiniSearchText:$scope.qs,
+                    IsJson:1
+                }
+
+                $ucmapi.post(opts,function(err,data){
+                    console.log(data);
+                    $scope.SearchResults = data.ResultSets.SearchResults;
+                })
+            }
+
+            $scope.$watch('qs',function(n,o){
+                if (n.length > 3){
+                    updateSearch();
+                }
+            })
+        },
+
+
+        // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
+        // restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
+        // template: '',
+        // templateUrl: '',
+        // replace: true,
+        // transclude: true,
+        // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
+        link: function($scope, iElm, iAttrs, controller) {
+            
+        }
+    };
+}]);
 
 contentInaBox.directive('docInfo', ['$ucmapi', function () {
     // Runs during compile
@@ -185,20 +297,20 @@ contentInaBox.directive('docInfo', ['$ucmapi', function () {
 
             //get the full amount of metadata
             //pdftest
-//            var opt = {
-//                IdcService: "DOC_INFO",
-//                dID: 92385,
-//                dDocName: "CIAB_CM092385",
-//                IsJson: 1
-//            };
+           var opt = {
+               IdcService: "DOC_INFO",
+               dID: 92385,
+               dDocName: "CIAB_CM092385",
+               IsJson: 1
+           };
 
             //image test
-            var opt = {
-                IdcService: "DOC_INFO",
-                dID: 90984,
-                dDocName: "CIAB_CM090984",
-                IsJson: 1
-            };
+            // var opt = {
+            //     IdcService: "DOC_INFO",
+            //     dID: 90984,
+            //     dDocName: "CIAB_CM090984",
+            //     IsJson: 1
+            // };
 
             $ucmapi.post(opt, function (err, data) {
                 if (err) {
@@ -217,8 +329,6 @@ contentInaBox.directive('docInfo', ['$ucmapi', function () {
         // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
         // restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
         // template: '',
-        templateUrl: "/partials/doc-info.html",
-        replace: true,
         // transclude: true,
         // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
         link: function ($scope, iElm, iAttrs, controller) {
@@ -282,25 +392,23 @@ contentInaBox.directive('docInfoPanel', ['$ucmapi', function () {
         // priority: 1,
         // terminal: true,
         // scope: {}, // {} = isolate, true = child, false/undefined = no change
-        // cont­rol­ler: function($scope, $element, $attrs, $transclue) {},
         controller: function ($scope, $ucmapi, $element, $attrs) {
             function metadataSubset() {
-                $scope.metadataSubSmall = [],
-
-                    docInfo = $scope.DocInfo;
+                $scope.metadataSubSmall = [];
+                var docInfo = $scope.DocInfo;
 
                 if (docInfo) {
-                    for (i = 0; i < METADATA_SUBSET_SMALL.length; i++) {
+                    for (var i = 0; i < METADATA_SUBSET_SMALL.length; i++) {
                         var o = {};
                         o.key = METADATA_SUBSET_SMALL[i];
                         o.val = docInfo[METADATA_SUBSET_SMALL[i]];
                         $scope.metadataSubSmall.push(o);
                     }
                 }
-            };
+            }
 
             $scope.$on('docInfo:updated', function () {
-                console.log("docInfoUpdated")
+                console.log("docInfoUpdated");
                 metadataSubset();
             });
 
@@ -474,6 +582,98 @@ contentInaBox.directive('getComments', ['$ucmapi', function () {
     };
 }]);
 
+contentInaBox.directive("draggable",[function(){
+
+    var handleDragStart = function (e){
+        console.log("hello");
+        this.style.opacity = '1';
+
+        // e.originalEvent will return the native javascript event as opposed to jQuery wrapped event
+        e.originalEvent.dataTransfer.effectAllowed = 'copy';
+
+        //creating an object for transferring data onto the droppable object
+        var dataInfo = {
+            dataId:e.currentTarget.getAttribute("data-Id"),
+            extraData:"this is a sample data"
+        };
+
+        //payload from the draggable object
+        e.originalEvent.dataTransfer.setData('text/plain', angular.toJson(dataInfo)); // required otherwise doesn't work
+
+    };
+
+    var handleDragEnd = function(e){
+        this.style.opacity = "1";
+        e.preventDefault();
+    };
+
+    return {
+        restrict:'A',
+        link:function(scope,jElm,attrs){
+
+            console.log("gragabe");
+
+            jElm.attr("draggable","true");
+            jElm.bind("dragstart",handleDragStart);
+            jElm.bind("dragend",handleDragEnd);
+        }
+    }
+}]);
+
+contentInaBox.directive("droppable",[function(){
+
+    return{
+
+
+        restrict:'A',
+        link: function($scope,jElement,attrs){
+            var jElm = jElement;
+            //console.log("droppable");
+
+            $scope.fnOnDrop = function(d){
+                console.log(d);
+            };
+
+            var dnD = {
+
+
+                handleDropleave : function(e){
+                    jElm.removeClass("over"); // for removing highlighting effect on droppable object
+                },
+
+                handleDragEnter : function(e) {
+                    if (e.preventDefault) e.preventDefault(); // allows us to drop
+                    jElm.addClass("over"); // for giving highlighting effect on droppable object
+                },
+
+                handleDragOver : function(e) {
+                    if (e.preventDefault) e.preventDefault(); // allows us to drop
+                    jElm.addClass("over"); // for giving highlighting effect on droppable object
+                    return false;
+                },
+
+                handleDropped : function(e){
+                    if (e.stopPropagation) e.stopPropagation(); // stops the browser from redirecting..
+
+                    var jsonDataStr = e.originalEvent.dataTransfer.getData('text/plain');
+
+                    //console.log("recieved ", jsonData);
+                    if(jsonDataStr){
+                        var jsonData = angular.fromJson(jsonDataStr);
+                        $scope.fnOnDrop(jsonData); // this will be called on the directive's parent scope
+                    }
+                    jElm.removeClass("over"); // for removing highlighting effect on droppable object
+                    return false;
+                }
+            };
+            jElement.bind("dragenter",dnD.handleDragEnter);
+            jElement.bind("dragover",dnD.handleDragOver);
+            jElement.bind("dragleave",dnD.handleDropleave);
+            jElement.bind("drop",dnD.handleDropped);
+
+        },
+    }
+}]);
 
 contentInaBox.filter('localUrl', function () {
     return function (input) {

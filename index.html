@@ -1,6 +1,6 @@
 <!DOCTYPE html >
 <html ng-app="contentInaBox">
-<head id="head"  ng-controller="contentInaBoxCtrl">
+<head>
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
@@ -31,8 +31,11 @@
     </style>
 
 
+
+
 </head>
-<body>
+<body  ng-controller="contentInaBoxCtrl">
+
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -48,13 +51,14 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Search</a></li>
+                    <li><a href="#" ng-click="loadPage('search')">Search</a></li>
+                    <li><a href="#" ng-click="loadPage('docInfo')">Doc Info</a></li>
             <li><a href="#">Link</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Search</a></li>
-                    <li><a href="#">Another action</a></li>
+                    <li><a href="#" ng-click="loadSearch">Search</a></li>
+                    <li><a href="#" ng-click="loadDocInfo()">Doc Info</a></li>
                     <li><a href="#">Something else here</a></li>
                     <li><a href="#">Separated link</a></li>
                     <li><a href="#">One more separated link</a></li>
@@ -85,12 +89,23 @@
 
 
 
-<div class="fluid-container" doc-info>
+
+
+
+<div class="fluid-container" page-manager>
 
 
 </div>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="//code.jquery.com/jquery.js"></script>
+
+
+<div >
+    <div >
+        <div data-dataId="{{someData}}" data-draggable="true">This is a draggable div</div>
+        <div data-droppable="" >Drop something here which is draggable</div>
+    </div>
+</div>
+
+
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/assets/js/bootstrap.js"></script>
 

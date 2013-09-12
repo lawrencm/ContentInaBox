@@ -1,0 +1,41 @@
+<div simple-search>
+    <div class="col-lg-12">
+        <h1>Simple Search</h1>
+        <div class="col-lg-12">
+        	<input type="search"
+		       ng-model="qs"
+		       name="qs"/>		       
+        </div>
+
+
+        <div ng-repeat="result in SearchResults" class="media">
+		
+
+
+        <a class="pull-left" href="#">    <img class="media-object" ng-src="/cs/Idcplg?IdcService=GET_FILE&amp;dID={{result.dID}}&amp;rendition=thumbnail">  </a>
+
+        <div class="media-body">
+          <h4 class="media-heading">{{result.dDocTitle}}</h4>
+          <small>{{result.dDocLastModifier}} - {{result.dDocLastModifiedDate}}</small>
+          <p>{{result.dFormat}}</p>
+          <p>{{result.srfDocSnippet}}</p>
+      
+        </div>
+      
+
+<!-- 
+        	<pre>
+        		{{result | json}}
+        	</pre> -->
+        </div>
+
+    </div>
+
+
+
+    <pre>
+    	{{qs | json }}
+
+    </pre>
+
+</div>
