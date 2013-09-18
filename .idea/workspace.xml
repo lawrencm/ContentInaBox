@@ -1,26 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="20cee92b-afc0-4c51-9948-48ebb9c66249" name="Default" comment="" />
+    <list default="true" id="20cee92b-afc0-4c51-9948-48ebb9c66249" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/actions.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/actionsModule.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/application.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/partials/browse/breadcrumbs.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/browse.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/browseModule.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/partials/actions/button-link-actions-menu.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/partials/actions/document-actions-panel-menu.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/partials/forms/field-edit-widget.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/partials/browse/folder-contents.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/partials/browse/folder-edit-form.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/partials/browse/folder-info-panel.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/formModule.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/js/require.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/styles/bootstrap.css" afterPath="$PROJECT_DIR$/assets/styles/bootstrap.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/less/bootstrap.less" afterPath="$PROJECT_DIR$/assets/less/bootstrap.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/partials/panels/doc-info-panel.html" afterPath="$PROJECT_DIR$/partials/panels/doc-info-panel.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/doc-info.html" afterPath="$PROJECT_DIR$/templates/doc-info.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/search.html" afterPath="$PROJECT_DIR$/templates/search.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/less/variables.less" afterPath="$PROJECT_DIR$/assets/less/variables.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="ContentInaBox.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/ucmpage.html" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1378780855004" ignored="false" />
-    <file path="/app.js" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1378890515174" ignored="false" />
-    <file path="/index.html" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1378886407049" ignored="false" />
+    <file path="/app.js" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1379476393065" ignored="false" />
+    <file path="/index.html" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1379470605553" ignored="false" />
     <file path="/doc-info-panel.html" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1378796129681" ignored="false" />
-    <file path="/dummy.xml" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1378884208153" ignored="false" />
-    <file path="/doc-info.html" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1378889511395" ignored="false" />
+    <file path="/dummy.xml" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1379472537021" ignored="false" />
+    <file path="/doc-info.html" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1379379628352" ignored="false" />
     <file path="/document-preview-pdf.html" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1378890363515" ignored="false" />
     <file path="/viewer.html" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1378805457650" ignored="false" />
     <file path="/viewer.css" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1378858643779" ignored="false" />
     <file path="/test.js" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1378859001351" ignored="false" />
     <file path="/bootstrap-pdf-viewer.js" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1378864386671" ignored="false" />
     <file path="/bootstrap-pdf-viewer.css" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1378864731442" ignored="false" />
-    <file path="/Dummy.txt" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1378889202042" ignored="false" />
+    <file path="/Dummy.txt" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1379033893229" ignored="false" />
     <file path="/document-preview-image.html" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1378886053417" ignored="false" />
     <file path="/document-preview-none.html" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1378884228696" ignored="false" />
     <file path="/rev-history-panel.html" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1378887165085" ignored="false" />
     <file path="/renditions-panel.html" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1378889339452" ignored="false" />
+    <file path="/search.html" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1378976201171" ignored="false" />
+    <file path="/bootstrap.less" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1379033051205" ignored="false" />
+    <file path="/metadata.js" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1379497456669" ignored="false" />
+    <file path="/metadata.html" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1379492988664" ignored="false" />
+    <file path="/metadataModule.js" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1379322801540" ignored="false" />
+    <file path="/browse.html" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1379404337650" ignored="false" />
+    <file path="/browseModule.js" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1379405143141" ignored="false" />
+    <file path="/folder-contents.html" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1379404391450" ignored="false" />
+    <file path="/actions.js" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1379321598137" ignored="false" />
+    <file path="/actionsModule.js" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1379321921403" ignored="false" />
+    <file path="/folder-actions-link-menu.html" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1379322513813" ignored="false" />
+    <file path="/document-actions-panel-menu.html" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1379321147324" ignored="false" />
+    <file path="/application.js" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1379379347190" ignored="false" />
+    <file path="/folder-info-panel.html" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1379404046650" ignored="false" />
+    <file path="/folder-edit-form.html" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1379404468681" ignored="false" />
+    <file path="/formModule.js" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1379497346045" ignored="false" />
+    <file path="/field-edit-widget.html" changelist="20cee92b-afc0-4c51-9948-48ebb9c66249" time="1379497517901" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,63 +85,70 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="55" selection-start="523" selection-end="523" vertical-scroll-proportion="-6.25">
+            <state line="9" column="1" selection-start="269" selection-end="762" vertical-scroll-proportion="-5.625">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rev-history-panel.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/partials/panels/rev-history-panel.html">
+      <file leaf-file-name="metadata.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/metadata.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="0" selection-start="164" selection-end="164" vertical-scroll-proportion="-4.375">
+            <state line="60" column="39" selection-start="1765" selection-end="1765" vertical-scroll-proportion="-21.875">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="doc-info-panel.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/partials/panels/doc-info-panel.html">
+      <file leaf-file-name="field-edit-widget.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/partials/forms/field-edit-widget.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="52" selection-start="716" selection-end="716" vertical-scroll-proportion="-13.75">
+            <state line="8" column="8" selection-start="214" selection-end="214" vertical-scroll-proportion="0.17751479">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="doc-info.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/partials/doc-info.html">
+      <file leaf-file-name="field-panel-table-row.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/partials/metadata/field-panel-table-row.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="59" selection-start="5950" selection-end="5950" vertical-scroll-proportion="-33.916668">
-              <folding>
-                <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="document-preview-pdf.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/partials/previews/document-preview-pdf.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="65" selection-end="65" vertical-scroll-proportion="-1.25">
+            <state line="1" column="26" selection-start="32" selection-end="50" vertical-scroll-proportion="-0.625">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="renditions-panel.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/partials/panels/renditions-panel.html">
+      <file leaf-file-name="formModule.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/formModule.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="51" selection-start="456" selection-end="456" vertical-scroll-proportion="-12.5">
+            <state line="82" column="0" selection-start="2791" selection-end="2791" vertical-scroll-proportion="-9.576923">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="dragNDropModule.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/dragNDropModule.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="58" selection-start="863" selection-end="914" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="metadata.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/metadata.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="154" column="27" selection-start="4124" selection-end="4124" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="187" column="0" selection-start="5862" selection-end="6050" vertical-scroll-proportion="0.30140597">
+            <state line="75" column="0" selection-start="2271" selection-end="2348" vertical-scroll-proportion="-43.26923">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -107,31 +156,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="document-preview-none.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/partials/previews/document-preview-none.html">
+      <file leaf-file-name="browseModule.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/browseModule.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="63" selection-start="63" selection-end="63" vertical-scroll-proportion="-0.0">
+            <state line="141" column="57" selection-start="3653" selection-end="3914" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="document-preview-image.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/partials/previews/document-preview-image.html">
+      <file leaf-file-name="metadataModule.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/metadataModule.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="42" selection-start="96" selection-end="96" vertical-scroll-proportion="-0.625">
+            <state line="23" column="70" selection-start="638" selection-end="638" vertical-scroll-proportion="0.0">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="xml2json.min.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/js/xml2json.min.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="83" selection-start="1088" selection-end="1088" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -143,32 +181,40 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitLogSettings">
+    <option name="myDateState">
+      <MyDateState />
+    </option>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/ucmpage.html" />
-        <option value="$PROJECT_DIR$/partials/doc-info-panel.html" />
-        <option value="$PROJECT_DIR$/pdfjs/web/viewer.html" />
-        <option value="$PROJECT_DIR$/pdfjs/web/viewer.css" />
-        <option value="$PROJECT_DIR$/js/test.js" />
-        <option value="$PROJECT_DIR$/assets/js/pdfjs/js/bootstrap-pdf-viewer.js" />
-        <option value="$PROJECT_DIR$/assets/js/pdfjs/css/bootstrap-pdf-viewer.css" />
-        <option value="$PROJECT_DIR$/assets/js/xml2json.min.js" />
-        <option value="$PROJECT_DIR$/partials/previews/document-preview-none.html" />
-        <option value="$PROJECT_DIR$/partials/previews/document-preview-image.html" />
-        <option value="$PROJECT_DIR$/partials/panels/rev-history-panel.html" />
-        <option value="$PROJECT_DIR$/partials/panels/renditions-panel.html" />
-        <option value="$PROJECT_DIR$/partials/doc-info.html" />
+        <option value="$PROJECT_DIR$/config/application.js" />
+        <option value="$PROJECT_DIR$/templates/doc-info.html" />
+        <option value="$PROJECT_DIR$/partials/browse/folder-info-panel.html" />
+        <option value="$PROJECT_DIR$/partials/browse/folder-edit-form.html" />
+        <option value="$PROJECT_DIR$/partials/browse/folder-contents.html" />
+        <option value="$PROJECT_DIR$/templates/browse.html" />
+        <option value="$PROJECT_DIR$/modules/browseModule.js" />
+        <option value="$PROJECT_DIR$/partials/metadata/info-panel.html" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/partials/previews/document-preview-pdf.html" />
         <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/assets/js/require.js" />
+        <option value="$PROJECT_DIR$/modules/metadataModule.js" />
+        <option value="$PROJECT_DIR$/metadata.html" />
+        <option value="$PROJECT_DIR$/modules/formModule.js" />
+        <option value="$PROJECT_DIR$/config/metadata.js" />
+        <option value="$PROJECT_DIR$/partials/forms/field-edit-widget.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="379" />
-    <option name="y" value="117" />
-    <option name="width" value="1506" />
+    <option name="x" value="108" />
+    <option name="y" value="22" />
+    <option name="width" value="1450" />
     <option name="height" value="1322" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -199,14 +245,14 @@
       </profile-state>
     </entry>
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
@@ -232,15 +278,13 @@
               <option name="myItemId" value="ContentInaBox" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ContentInaBox" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ContentInaBox" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemId" value="angular.js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -252,8 +296,18 @@
               <option name="myItemId" value="ContentInaBox" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="partials" />
+              <option name="myItemId" value="ContentInaBox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ContentInaBox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -303,6 +357,106 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="partials" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metadata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ContentInaBox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ContentInaBox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="partials" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="forms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ContentInaBox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ContentInaBox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="partials" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="browse" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ContentInaBox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ContentInaBox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="partials" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="actions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ContentInaBox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ContentInaBox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ContentInaBox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ContentInaBox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ContentInaBox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ContentInaBox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -333,12 +487,12 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="JavaScript.Libraries" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/angular.js" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PublishConfig">
     <servers>
@@ -400,7 +554,7 @@
     </task>
     <servers />
   </component>
-  <component name="TodoView" selected-index="0">
+  <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
       <are-packages-shown value="false" />
       <are-modules-shown value="false" />
@@ -421,22 +575,22 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="379" y="117" width="1506" height="1322" extended-state="0" />
+    <frame x="108" y="22" width="1450" height="1322" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294509" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24986821" sideWeight="0.5839822" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27039784" sideWeight="0.67001116" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2810091" sideWeight="0.6705491" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3294509" sideWeight="0.44571814" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294509" sideWeight="0.5542819" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32998884" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294509" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41694537" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -504,117 +658,123 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/angular.js">
+    <entry file="file://$PROJECT_DIR$/partials/browse/folder-edit-form.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="0" column="19" selection-start="19" selection-end="19" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/angular.js">
+    <entry file="file://$PROJECT_DIR$/partials/browse/folder-info-panel.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/pdfjs/viewer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="60" selection-start="972" selection-end="1045" vertical-scroll-proportion="-13.125">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/pdfjs/js/bootstrap-pdf-viewer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="16" selection-end="16" vertical-scroll-proportion="0.0">
+        <state line="40" column="0" selection-start="1257" selection-end="1257" vertical-scroll-proportion="-25.0">
           <folding>
-            <marker date="1378865042000" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1378865042000" expanded="false" signature="-1:-1" placeholder="..." />
+            <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/pdfjs/css/bootstrap-pdf-viewer.css">
+    <entry file="file://$PROJECT_DIR$/templates/browse.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="2" selection-start="1171" selection-end="1184" vertical-scroll-proportion="0.0">
+        <state line="4" column="24" selection-start="51" selection-end="51" vertical-scroll-proportion="-2.5">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/xml2json.min.js">
+    <entry file="file://$PROJECT_DIR$/partials/browse/folder-contents.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="83" selection-start="1088" selection-end="1088" vertical-scroll-proportion="0.0">
+        <state line="18" column="0" selection-start="411" selection-end="411" vertical-scroll-proportion="-11.25">
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/partials/previews/document-preview-none.html">
+    <entry file="file://$PROJECT_DIR$/partials/metadata/info-panel.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="63" selection-start="63" selection-end="63" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/partials/panels/rev-history-panel.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="164" selection-end="164" vertical-scroll-proportion="-4.375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/partials/panels/doc-info-panel.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="52" selection-start="716" selection-end="716" vertical-scroll-proportion="-13.75">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/partials/panels/renditions-panel.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="51" selection-start="456" selection-end="456" vertical-scroll-proportion="-12.5">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/partials/doc-info.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="59" selection-start="5950" selection-end="5950" vertical-scroll-proportion="-33.916668">
-          <folding>
-            <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="55" selection-start="523" selection-end="523" vertical-scroll-proportion="-6.25">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/partials/previews/document-preview-image.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="42" selection-start="96" selection-end="96" vertical-scroll-proportion="-0.625">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/partials/previews/document-preview-pdf.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="65" selection-end="65" vertical-scroll-proportion="-1.25">
+        <state line="13" column="22" selection-start="473" selection-end="633" vertical-scroll-proportion="-8.125">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="187" column="0" selection-start="5862" selection-end="6050" vertical-scroll-proportion="0.30140597">
+        <state line="75" column="0" selection-start="2271" selection-end="2348" vertical-scroll-proportion="-43.26923">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/require.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="90" selection-start="3855" selection-end="3855" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="1" selection-start="269" selection-end="762" vertical-scroll-proportion="-5.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partials/metadata/field-panel-table-row.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="26" selection-start="32" selection-end="50" vertical-scroll-proportion="-0.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/browseModule.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="141" column="57" selection-start="3653" selection-end="3914" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/dragNDropModule.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="58" selection-start="863" selection-end="914" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/metadata.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="39" selection-start="1765" selection-end="1765" vertical-scroll-proportion="-21.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/metadataModule.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="70" selection-start="638" selection-end="638" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/metadata.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="154" column="27" selection-start="4124" selection-end="4124" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/formModule.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="82" column="0" selection-start="2791" selection-end="2791" vertical-scroll-proportion="-9.576923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partials/forms/field-edit-widget.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="8" selection-start="214" selection-end="214" vertical-scroll-proportion="0.17751479">
+          <folding />
         </state>
       </provider>
     </entry>

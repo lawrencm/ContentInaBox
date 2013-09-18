@@ -1,0 +1,21 @@
+<div class="metadata-panel panel panel-default" id="metadata-panel" data-droppable="">
+	<span  ng-repeat="aspect in testDocInfo.metadataAspects" replace="true">
+
+
+		<div class="panel-heading">
+			<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" ng-href="#collapseMetadata{{$index}}">{{metadataConfig.aspects[$index].label}}</a>
+		</div>
+
+
+		<div id="collapseMetadata{{$index}}" class="panel-collapse collapse in">
+			<div class="panel-body">
+				<div ng-repeat="field in metadataConfig.aspects[$index].fields">
+					<div metadata-field-info="/partials/metadata/field-panel-table-row.html"></div>
+				</div>
+			</div>
+		</div>
+
+
+	</span>
+</div>
+

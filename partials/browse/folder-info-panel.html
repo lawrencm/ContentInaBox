@@ -1,0 +1,135 @@
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+        <div class="pull-left" ng-if="FolderInfo.fFolderGUID">
+            <a class=""
+               href="#"
+               ng-click="setFolderId(FolderInfo.fFolderGUID)">
+                <img class="media-object"
+                     ng-src="/assets/images/icons/folder-large.png" style="width:24px;height:auto">
+            </a>
+        </div>
+        &nbsp;
+        {{ FolderInfo.fDisplayName }}
+    </div>
+    <div class="panel-body" ng-if="FolderInfo.fDisplayDescription">
+        {{ FolderInfo.fDisplayDescription }}
+    </div>
+
+    <div class="panel-body" ng-if="!FolderInfo.fDisplayDescription">
+        <small class="text-muted">No description available for this folder</small>
+    </div>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <td><span class="icon-time"></span>
+                <span class="lg-label">Last Modified:</span></td>
+            <td>{{ FolderInfo.fLastModifiedDate}}</td>
+        </tr>
+        <tr>
+            <td><span class="icon-user"></span>
+                <span class="lg-label">By:</span></td>
+            <td>{{ FolderInfo.fLastModifier }}</td>
+        </tr>
+
+        </tbody>
+    </table>
+
+
+
+
+
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <td><small class="text-muted">Security</small></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><span class="icon-group"></span>
+                <span class="lg-label">Group</span></td>
+            <td>{{ FolderInfo.fSecurityGroup }}</td>
+        </tr>
+        <tr>
+            <td><span class="icon-sitemap"></span>
+                <span class="lg-label">Account</span></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><span class="glyphicon glyphicon-user"></span>
+                <span class="lg-label">Owner</span>
+
+            </td>
+            <td>{{ FolderInfo.fOwner}}</td>
+        </tr>
+        <tr>
+            <td><span class="glyphicon glyphicon-user"></span>
+                <span class="lg-label">Creator</span></td>
+            <td>{{ FolderInfo.fCreator }}</td>
+        </tr>
+        </tbody>
+        </table>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <td><small class="text-muted">Permissions</small></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><span class="lg-label">You Can</span></td>
+            <td>
+                <span ng-if="myPerms.R" class="text-success icon-eye-open perms-icon"></span>
+                <span ng-if="!myPerms.R" class="text-muted icon-eye-open perms-icon"></span>
+
+                <span ng-if="myPerms.W" class="text-success icon-pencil perms-icon"></span>
+                <span ng-if="!myPerms.W" class="text-muted icon-pencil perms-icon"></span>
+
+                <span ng-if="myPerms.D" class="text-success icon-trash perms-icon"></span>
+                <span ng-if="!myPerms.D" class="text-muted icon-trash perms-icon"></span>
+
+                <span ng-if="myPerms.A" class="text-success icon-cogs perms-icon"></span>
+                <span ng-if="!myPerms.A" class="text-muted icon-cogs perms-icon"></span>
+
+
+
+                </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <table class="table">
+        <tbody>
+        <tr ng-repeat="(key,value) in clbUsrList">
+            <td ng-if="$first">
+                <small class="text-muted">
+                    Others Can
+                </small>
+            </td><td ng-if="$first"></td>
+        </tr>
+        <tr ng-repeat="(key,value) in clbUsrList">
+            <td><span class="lg-label">{{ key }}</span></td>
+            <td>
+                <span ng-if="value.R" class="text-success icon-eye-open perms-icon"></span>
+                <span ng-if="!value.R" class="text-muted icon-eye-open perms-icon"></span>
+
+                <span ng-if="value.W" class="text-success icon-pencil perms-icon"></span>
+                <span ng-if="!value.W" class="text-muted icon-pencil perms-icon"></span>
+
+                <span ng-if="value.D" class="text-success icon-trash perms-icon"></span>
+                <span ng-if="!value.D" class="text-muted icon-trash perms-icon"></span>
+
+                <span ng-if="value.A" class="text-success icon-cogs perms-icon"></span>
+                <span ng-if="!value.A" class="text-muted icon-cogs perms-icon"></span>
+
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>

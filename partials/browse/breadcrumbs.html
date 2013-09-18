@@ -1,0 +1,8 @@
+<ol class="breadcrumb">
+    <li ng-repeat="folder in path">
+        <span ng-if="$first"><a href="#" ng-click="folderContentsBCClick($index)">Browse</a></span>
+            <span ng-if="!$first"><a href="#" ng-click="folderContentsBCClick($index)">{{ folder.fDisplayName
+                }}</a></span>
+        </a>
+    </li>
+</ol>

@@ -5907,12 +5907,6 @@ td.visible-print {
     display: none !important;
   }
 }
-input.ng-invalid.ng-dirty {
-  border-color: #e74c3c;
-}
-input.ng-invalid.ng-dirty:before {
-  content: "\f088";
-}
 body {
   margin-top: 80px;
 }
@@ -5947,43 +5941,8 @@ body {
 .search-form-wrapper {
   margin-bottom: 40px;
 }
-.panel-group .metadata-panel .panel-heading {
+.panel-group .metadata-panel .panel-header {
   background-color: #ecf0f1;
-}
-.drop-target {
-  border-radius: 4px;
-  border: 1px dotted white;
-  background: #ecf0f1;
-  margin: 10px;
-}
-.unselectable {
-  /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
-
-  /* Check this site for more details: http://help.dottoro.com/lhwdpnva.php */
-
-  -moz-user-select: none;
-  /* These user-select properties are inheritable, used to prevent text selection */
-
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  /* From IE10 only */
-
-  user-select: none;
-  /* Not valid CSS yet, as of July 2012 */
-
-  -webkit-user-drag: none;
-  /* Prevents dragging of images/divs etc */
-
-  user-drag: none;
-}
-.lg-label {
-  display: inline-block;
-  width: 115px;
-  padding-left: 5px;
-  font-weight: bold;
-}
-.perms-icon {
-  margin-right: 15px;
 }
 .btn:active {
   -webkit-box-shadow: none;

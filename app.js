@@ -21,74 +21,10 @@
 var METADATA_SUBSET_SMALL = ['dDocTitle', 'dDocName', 'dDocAuthor', 'dInDate', 'dFormat'];
 
 
-var contentInaBox = angular.module('contentInaBox', []);
+var contentInaBox = angular.module('contentInaBox', ['metadata', 'dnd', 'browse', 'actions','forms']);
 
 
-contentInaBox.factory('$ucmapi', function ($rootScope, $http) {
-    var ROOT_URL = "/cs/idcplg";
 
-
-    var convertResultSets = function (data) {
-
-        console.log(data);
-
-        var rs = {};
-        for (var i in data.ResultSets) {
-            rs[i] = [];
-
-
-            //loop over the rows
-            for (var r = 0; r < data.ResultSets[i].rows.length; r++) {
-                var row = {};
-
-                //loop over tyhe field keys and creat an object
-                for (var k = 0; k < data.ResultSets[i].fields.length; k++) {
-                    var key = data.ResultSets[i].fields[k];
-                    row[key.name] = data.ResultSets[i].rows[r][k];
-//                    console.log(row);
-
-                }
-
-                rs[i].push(row);
-            }
-        }
-
-        return rs;
-    };
-
-    return {
-        post: function (data, callback) {
-
-            var binder = {LocalData: data};
-
-            $http.post(ROOT_URL, binder).
-                success(function (data, status, headers, config) {
-
-//                    console.log(data, status);
-                    data.ResultSets = convertResultSets(data);
-//                    console.log(data, status);
-
-
-                    callback(null, data);
-                }).
-                error(function (data, status, headers, config) {
-                    //TODO add broadacst here
-                    console.log("error");
-                    callback(data, null);
-                });
-        }
-//        emit: function (eventName, data, callback) {
-//            socket.emit(eventName, data, function () {
-//                var args = arguments;
-//                $rootScope.$apply(function () {
-//                    if (callback) {
-//                        callback.apply(socket, args);
-//                    }
-//                });
-//            })
-//        }
-    };
-});
 
 
 /*
@@ -137,21 +73,24 @@ contentInaBox.service('dynamicJS', [
 
 
 //rootscope controller
-contentInaBox.controller("contentInaBoxCtrl", function ($scope) {
-    $scope.METADATA_SUBSET = ['dDocTitle', 'dDocAuthor'] ;
+contentInaBox.controller("contentInaBoxCtrl", function ($scope, $rootScope) {
+
+    $scope.METADATA_SUBSET = ['dDocTitle', 'dDocAuthor'];
+    $rootScope.qs = "";
+
+    //discussion settings
+    $scope.enableDiscussions = appConfig.discussions.enableDiscussions;
 
 
-
-
-
-$scope.someData = "Data to be dragged";
+    $scope.someData = "Data to be dragged";
 
     //for handling the data as passed after the object is dropped
-    $scope.fnOnDrop = function(jsonData){
+    $scope.fnOnDrop = function (jsonData) {
         //do something useful with the data here.
     };
 
 });
+
 
 contentInaBox.directive('getMetadefs', ['$ucmapi', function () {
     // Runs during compile
@@ -190,7 +129,7 @@ contentInaBox.directive('getMetadefs', ['$ucmapi', function () {
     };
 }]);
 
-contentInaBox.directive('pageManager', ['$ucmapi', function(){
+contentInaBox.directive('pageManager', ['$ucmapi', function () {
     // Runs during compile
     return {
         // name: '',
@@ -199,27 +138,46 @@ contentInaBox.directive('pageManager', ['$ucmapi', function(){
         // scope: {}, // {} = isolate, true = child, false/undefined = no change
         // cont­rol­ler: function($scope, $element, $attrs, $transclue) {},
 
-        controller: function($scope,$element,$attrs){
-                
-                var template = "/templates/search.html";
-                $scope.switchMainTemplate = function(){
-                    return template;
-                }
+        controller: function ($scope, $element, $attrs) {
 
-                $scope.loadPage = function(s){
-                    console.log("loading page: " + s);
-                    switch (s){
-                        case "search":
-                            template = "/templates/search.html";
-                            break;
-                        case "docInfo":
-                            template = "/templates/doc-info.html";
-                            break;
-                        default:
-                            break;
-                    }
-                    $scope.switchMainTemplate();
+            $scope.loadDocInfo = function (dID, dDocName) {
+                //set the paramas of the active document to passed in values
+
+                console.log("hello");
+
+                $scope.activeDocument = {
+                    dID: dID,
+                    dDocName: dDocName
                 };
+
+                $scope.loadPage('docInfo');
+//                    $scope.loadPage('browse');
+            };
+
+            var template = "/templates/browse.html";
+            // var template = "/templates/search.html";
+//                var template = "/templates/doc-info.html";
+            $scope.switchMainTemplate = function () {
+                return template;
+            }
+
+            $scope.loadPage = function (s) {
+                console.log("loading page: " + s);
+                switch (s) {
+                    case "browse":
+                        template = "/templates/browse.html";
+                        break;
+                    case "search":
+                        template = "/templates/search.html";
+                        break;
+                    case "docInfo":
+                        template = "/templates/doc-info.html";
+                        break;
+                    default:
+                        break;
+                }
+                $scope.switchMainTemplate();
+            };
         },
 
         // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
@@ -229,43 +187,70 @@ contentInaBox.directive('pageManager', ['$ucmapi', function(){
         // replace: true,
         // transclude: true,
         // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
-        link: function($scope, iElm, iAttrs, controller) {
-            
+        link: function ($scope, iElm, iAttrs, controller) {
+
         }
     };
 }]);
 
 
-contentInaBox.directive('simpleSearch', ['$ucmapi', function(){
+contentInaBox.directive('simpleSearch', ['$ucmapi', function () {
     // Runs during compile
     return {
         // name: '',
         // priority: 1,
         // terminal: true,
         // scope: {}, // {} = isolate, true = child, false/undefined = no change
-        controller: function($scope,$ucmapi, $element, $attrs) {
-            $scope.qs = "";
-            function updateSearch(){
-                var opts = {
-                    IdcService:"GET_SEARCH_RESULTS",
-                    SortField:"dInDate",
-                    SortOrder:"Desc",
-                    ResultCount:20,
-                    QueryText:"<qsch>" + $scope.qs + "</qsch>",
-                    ftx:1,
-                    SearchQueryFormat:"Universal",
-                    MiniSearchText:$scope.qs,
-                    IsJson:1
+        controller: function ($scope, $rootScope, $ucmapi, $element, $attrs) {
+
+
+            $scope.qs = $rootScope.qs;
+
+            $scope.$watch('qs', function (n, o) {
+                $rootScope.qs = n;
+            });
+
+
+            $scope.hasThumbnail = function (dID) {
+                var thopts = {
+                    IdcService: "GET_FILE",
+                    dID: dID,
+                    Rendition: "rendition:T"
                 }
 
-                $ucmapi.post(opts,function(err,data){
+                return $ucmapi.post(thopts, function (err, data) {
+                    if (err) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+
+
+                });
+//
+            }
+
+            function updateSearch() {
+                var opts = {
+                    IdcService: "GET_SEARCH_RESULTS",
+                    SortField: "dInDate",
+                    SortOrder: "Desc",
+                    ResultCount: 20,
+                    QueryText: "<qsch>" + $scope.qs + "</qsch>",
+                    ftx: 1,
+                    SearchQueryFormat: "Universal",
+                    MiniSearchText: $scope.qs,
+                    IsJson: 1
+                }
+
+                $ucmapi.post(opts, function (err, data) {
                     console.log(data);
                     $scope.SearchResults = data.ResultSets.SearchResults;
                 })
             }
 
-            $scope.$watch('qs',function(n,o){
-                if (n.length > 3){
+            $scope.$watch('qs', function (n, o) {
+                if (n.length > 3) {
                     updateSearch();
                 }
             })
@@ -279,11 +264,30 @@ contentInaBox.directive('simpleSearch', ['$ucmapi', function(){
         // replace: true,
         // transclude: true,
         // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
-        link: function($scope, iElm, iAttrs, controller) {
-            
+        link: function ($scope, iElm, iAttrs, controller) {
+
         }
     };
 }]);
+
+
+//contentInaBox.directive('breadcrumbs', ['$http', function(){
+//    return {
+//        priority: 1,
+//        controller: function ($scope, $element, $attrs) {
+//
+//
+//            $scope.$on('docInfo:updated', function () {
+//                console.log("breadcrumbs");
+//                console.log($scope.DocInfo);
+//            });
+//
+//        }
+//
+//
+//
+//    }
+//}]);
 
 contentInaBox.directive('docInfo', ['$ucmapi', function () {
     // Runs during compile
@@ -297,20 +301,20 @@ contentInaBox.directive('docInfo', ['$ucmapi', function () {
 
             //get the full amount of metadata
             //pdftest
-           var opt = {
-               IdcService: "DOC_INFO",
-               dID: 92385,
-               dDocName: "CIAB_CM092385",
-               IsJson: 1
-           };
+            var opt = {
+                IdcService: "DOC_INFO",
+                dID: $scope.activeDocument.dID,
+                dDocName: $scope.activeDocument.dDocName,
+                IsJson: 1
+            };
 
-            //image test
-            // var opt = {
-            //     IdcService: "DOC_INFO",
-            //     dID: 90984,
-            //     dDocName: "CIAB_CM090984",
-            //     IsJson: 1
-            // };
+            // image test
+//            var opt = {
+//                IdcService: "DOC_INFO",
+//                dID: 90984,
+//                dDocName: "CIAB_CM090984",
+//                IsJson: 1
+//            };
 
             $ucmapi.post(opt, function (err, data) {
                 if (err) {
@@ -337,39 +341,40 @@ contentInaBox.directive('docInfo', ['$ucmapi', function () {
     };
 }]);
 
-contentInaBox.directive('revisionHistoryPanel', ['$ucmapi', function(){
+contentInaBox.directive('revisionHistoryPanel', ['$ucmapi', function () {
     return {
-        controller: function($scope, $element, $attrs) {
-            function updateRevisionHistory(){
+        controller: function ($scope, $element, $attrs) {
+            function updateRevisionHistory() {
                 $scope.RevisionHistory = $scope.ResultSets.REVISION_HISTORY;
             }
+
 //
             $scope.$on('docInfo:updated', function () {
                 updateRevisionHistory();
             });
         },
         templateUrl: function (iElm, iAttrs) {
-            console.log("xxxx");
+            // console.log("xxxx");
             return iAttrs.templateUrl;
         },        // replace: true,
-        link: function($scope, iElm, iAttrs, controller) {
-            
+        link: function ($scope, iElm, iAttrs, controller) {
+
         }
     };
 }]);
 
-contentInaBox.directive('renditionsPanel', ['$ucmapi', function(){
+contentInaBox.directive('renditionsPanel', ['$ucmapi', function () {
     return {
-        controller: function($scope, $element, $attrs) {
+        controller: function ($scope, $element, $attrs) {
 
-            function updateRenditions(){
-                console.log($scope.ResultSets);
-
+            function updateRenditions() {
+                //console.log($scope.ResultSets);
                 $scope.Renditions = $scope.ResultSets.manifest;
             }
+
 //
             $scope.$on('docInfo:updated', function () {
-                console.log("zzz");
+                //console.log("zzz");
                 updateRenditions();
             });
         },
@@ -378,98 +383,47 @@ contentInaBox.directive('renditionsPanel', ['$ucmapi', function(){
             return iAttrs.templateUrl;
         },        // replace: true,
 
-        link: function($scope, iElm, iAttrs, controller) {
-
-        }
-    };
-}]);
-
-
-contentInaBox.directive('docInfoPanel', ['$ucmapi', function () {
-    // Runs during compile
-    return {
-        // name: '',
-        // priority: 1,
-        // terminal: true,
-        // scope: {}, // {} = isolate, true = child, false/undefined = no change
-        controller: function ($scope, $ucmapi, $element, $attrs) {
-            function metadataSubset() {
-                $scope.metadataSubSmall = [];
-                var docInfo = $scope.DocInfo;
-
-                if (docInfo) {
-                    for (var i = 0; i < METADATA_SUBSET_SMALL.length; i++) {
-                        var o = {};
-                        o.key = METADATA_SUBSET_SMALL[i];
-                        o.val = docInfo[METADATA_SUBSET_SMALL[i]];
-                        $scope.metadataSubSmall.push(o);
-                    }
-                }
-            }
-
-            $scope.$on('docInfo:updated', function () {
-                console.log("docInfoUpdated");
-                metadataSubset();
-            });
-
-        },
-        // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
-        // restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
-        // template: '',
-        templateUrl: function (iElm, iAttrs) {
-            return iAttrs.templateUrl;
-        },
-        replace: true,
-        // transclude: true,
-        // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
         link: function ($scope, iElm, iAttrs, controller) {
 
         }
     };
 }]);
 
+
 contentInaBox.directive('documentPreview', ['$ucmapi', function () {
     // Runs during compile
 
 
     return {
-        // name: '',
-        // priority: 1,
-        // terminal: true,
-        // scope: {}, // {} = isolate, true = child, false/undefined = no change
         controller: function ($scope, $compile, $filter, $element, $attrs) {
             var template = "/partials/previews/document-preview-pdf.html";
-
-
-            $scope.getTemplateUrl = function(){
-                if (typeof $scope.DocInfo != "undefined") {
-                    if (typeof $scope.DocInfo.dFormat != "undefined") {
-                        switch ($scope.DocInfo.dFormat) {
-                            case "image/jpeg":
-                                template = "/partials/previews/document-preview-image.html";
-                                break;
-                            case "application/pdf":
-                                template = "/partials/previews/document-preview-pdf.html";
-                                break;
-                            default:
-                                template = "/partials/previews/document-preview-none.html";
-                                break;
+            $scope.getTemplateUrl = function () {
+                if (typeof $scope.LocalData != "undefined") {
+//                    console.log($scope.DocInfo);
+                    if (typeof $scope.LocalData.DocUrl != "undefined") {
+                        var url = $scope.LocalData.DocUrl;
+                        if (url.endsWith(".pdf")) {
+                            template = "/partials/previews/document-preview-pdf.html";
                         }
+
+                        if (url.endsWith(".jpg") || url.endsWith(".gif") || url.endsWith(".png") || url.endsWith(".jpeg")) {
+                            template = "/partials/previews/document-preview-image.html";
+                        }
+
                     }
                 }
                 return template;
             };
 
-            $scope.updateViewer = function() {
-                if ($scope.DocInfo.dFormat == "application/pdf") {
-                  var url = $filter('localUrl')($scope.LocalData.DocUrl);
-
-                    console.log(url);
-
-                    $('#viewer').attr("data-url", url);
-
-
-                    var viewer = new PDFViewer($('#viewer'));
+            $scope.updateViewer = function () {
+                console.log($scope.LocalData);
+                if (typeof $scope.LocalData.DocUrl != 'undefined') {
+                    var url = $scope.LocalData.DocUrl;
+                    if (url.endsWith(".pdf")) {
+                        url = $filter('localUrl')($scope.LocalData.DocUrl);
+                        $('#viewer').attr("data-url", url);
+                        var viewer = new PDFViewer($('#viewer'));
+                    }
                 }
             }
 
@@ -482,7 +436,7 @@ contentInaBox.directive('documentPreview', ['$ucmapi', function () {
         // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
         // restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
         // template: '',
-        template : '<div ng-include="getTemplateUrl()"></div>',
+        template: '<div ng-include="getTemplateUrl()"></div>',
 //        templateUrl: function (iElm, iAttrs) {
 //            console.log(iAttrs);
 //            iAttrs.$watch(console.log("zzz"));
@@ -493,187 +447,76 @@ contentInaBox.directive('documentPreview', ['$ucmapi', function () {
 //        compile: function(tElement, tAttrs,function transclude( function(scope, cloneLinkingFn){
 //            return function linking(scope, elm, attrs){}
 //        })),
-        link: function ($scope, $compile,iElm, iAttrs, controller) {
-
-
-
+        link: function ($scope, $compile, iElm, iAttrs, controller) {
 
 
         }
     };
 }]);
-
 
 
 contentInaBox.directive('getComments', ['$ucmapi', function () {
     // Runs during compile
     return {
-        // name: '',
-        // priority: 1,
-        // terminal: true,
-        // scope: {}, // {} = isolate, true = child, false/undefined = no change
         controller: function ($scope, $ucmapi, $element, $attrs) {
+                var opts = {
+                    IdcService: "GET_ASSOCIATED_DISCUSSION_FILE",
+                    dID: 92385
+                };
 
-            var opts = {
-                IdcService: "GET_ASSOCIATED_DISCUSSION_FILE",
-                dID: 92385
-            };
+                function updateComments() {
+                    $ucmapi.post(opts, function (err, data) {
+                        var opts2 = {
+                            IdcService: "GET_FILE",
+                            dID: data.LocalData.dID
+                        }
+                        $ucmapi.post(opts2, function (err, data) {
+                            if (data) {
 
-            function updateComments() {
-                $ucmapi.post(opts, function (err, data) {
-
-                    var opts2 = {
-                        IdcService: "GET_FILE",
-                        dID: data.LocalData.dID
-                    }
-
-                    $ucmapi.post(opts2, function (err, data) {
-                        if (data) {
-
-                            var x = data;
-                            //trim whitespace from begining and end
-                            x = x.trim();
-                            //removelinebreaks
-                            x = x.replace(/(\r\n|\n|\r)/gm, "");
-                            //remove weird string
-                            x = x.replace("IDCFILE1100", "");
-                            //remove idoc and comments
-                            x = x.replace(/<!--[\s\S]*?-->/gm, "");
-                            //replace unclosed metatag
-                            x = x.replace(/<meta [\s\S]*?>/gm, "");
-                            x = x.replace("</html>", "");
-                            //remove html comments
-                            x = x.replace(/(  )/gm, "");
-                            x = "<discussions>" + x + "</discussions>";
+                                var x = data;
+                                //trim whitespace from begining and end
+                                x = x.trim();
+                                //removelinebreaks
+                                x = x.replace(/(\r\n|\n|\r)/gm, "");
+                                //remove weird string
+                                x = x.replace("IDCFILE1100", "");
+                                //remove idoc and comments
+                                x = x.replace(/<!--[\s\S]*?-->/gm, "");
+                                //replace unclosed metatag
+                                x = x.replace(/<meta [\s\S]*?>/gm, "");
+                                x = x.replace("</html>", "");
+                                //remove html comments
+                                x = x.replace(/(  )/gm, "");
+                                x = "<discussions>" + x + "</discussions>";
 
 
-                            //parse the xml and clean the undefined string
+                                //parse the xml and clean the undefined string
 
-                            var jval = xml2json($.parseXML(x));
-                            jval = jval.replace("undefined", "")
+                                var jval = xml2json($.parseXML(x));
+                                jval = jval.replace("undefined", "")
 
 
-                            var jsonData = JSON.parse(jval);
-                            $scope.discussions = jsonData.discussions.body.discussionPosts
+                                var jsonData = JSON.parse(jval);
+                                $scope.discussions = jsonData.discussions.body.discussionPosts
 //                            console.log(jsonData.discussions.body)
 
-                        }
-                    })
-                    //console.log(data);
-                });
-            }
+                            }
+                        })
+                    });
+                }
+
 
             $scope.$on('docInfo:updated', function () {
-                updateComments();
+                if ($scope.enableDiscussions) {
+                    updateComments();
+                }
             });
 
 
-        },
-        // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
-        // restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
-        // template: '',
-        // templateUrl: '',
-        // replace: true,
-        // transclude: true,
-        // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
-        link: function ($scope, iElm, iAttrs, controller) {
-
-        }
-    };
-}]);
-
-contentInaBox.directive("draggable",[function(){
-
-    var handleDragStart = function (e){
-        console.log("hello");
-        this.style.opacity = '1';
-
-        // e.originalEvent will return the native javascript event as opposed to jQuery wrapped event
-        e.originalEvent.dataTransfer.effectAllowed = 'copy';
-
-        //creating an object for transferring data onto the droppable object
-        var dataInfo = {
-            dataId:e.currentTarget.getAttribute("data-Id"),
-            extraData:"this is a sample data"
-        };
-
-        //payload from the draggable object
-        e.originalEvent.dataTransfer.setData('text/plain', angular.toJson(dataInfo)); // required otherwise doesn't work
-
-    };
-
-    var handleDragEnd = function(e){
-        this.style.opacity = "1";
-        e.preventDefault();
-    };
-
-    return {
-        restrict:'A',
-        link:function(scope,jElm,attrs){
-
-            console.log("gragabe");
-
-            jElm.attr("draggable","true");
-            jElm.bind("dragstart",handleDragStart);
-            jElm.bind("dragend",handleDragEnd);
         }
     }
 }]);
 
-contentInaBox.directive("droppable",[function(){
-
-    return{
-
-
-        restrict:'A',
-        link: function($scope,jElement,attrs){
-            var jElm = jElement;
-            //console.log("droppable");
-
-            $scope.fnOnDrop = function(d){
-                console.log(d);
-            };
-
-            var dnD = {
-
-
-                handleDropleave : function(e){
-                    jElm.removeClass("over"); // for removing highlighting effect on droppable object
-                },
-
-                handleDragEnter : function(e) {
-                    if (e.preventDefault) e.preventDefault(); // allows us to drop
-                    jElm.addClass("over"); // for giving highlighting effect on droppable object
-                },
-
-                handleDragOver : function(e) {
-                    if (e.preventDefault) e.preventDefault(); // allows us to drop
-                    jElm.addClass("over"); // for giving highlighting effect on droppable object
-                    return false;
-                },
-
-                handleDropped : function(e){
-                    if (e.stopPropagation) e.stopPropagation(); // stops the browser from redirecting..
-
-                    var jsonDataStr = e.originalEvent.dataTransfer.getData('text/plain');
-
-                    //console.log("recieved ", jsonData);
-                    if(jsonDataStr){
-                        var jsonData = angular.fromJson(jsonDataStr);
-                        $scope.fnOnDrop(jsonData); // this will be called on the directive's parent scope
-                    }
-                    jElm.removeClass("over"); // for removing highlighting effect on droppable object
-                    return false;
-                }
-            };
-            jElement.bind("dragenter",dnD.handleDragEnter);
-            jElement.bind("dragover",dnD.handleDragOver);
-            jElement.bind("dragleave",dnD.handleDropleave);
-            jElement.bind("drop",dnD.handleDropped);
-
-        },
-    }
-}]);
 
 contentInaBox.filter('localUrl', function () {
     return function (input) {
@@ -907,3 +750,6 @@ contentInaBox.filter('prettyFileSize', function () {
 })(this);
 
 
+String.prototype.endsWith = function (suffix) {
+    return this.indexOf(suffix, this.length - suffix.length) !== -1;
+};

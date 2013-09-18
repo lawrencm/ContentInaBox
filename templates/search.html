@@ -1,41 +1,58 @@
 <div simple-search>
-    <div class="col-lg-12">
+    <div class="col-lg-12 search-form-wrapper">
         <h1>Simple Search</h1>
-        <div class="col-lg-12">
-        	<input type="search"
-		       ng-model="qs"
-		       name="qs"/>		       
+            <div class="search-box">
+                <input type="search"
+                       ng-model="qs"
+                       name="search" placeholder="enter you search terms..."/>
+
+            </div>
+     </div>
+
+        <div class="col-lg-8">
+            <div ng-repeat="result in SearchResults" class="media">
+
+
+                <div class="pull-left img-thumbnail search-thumbnail-wrapper">
+                    <a class="" href="#" ng-click="loadDocInfo(result.dID,result.dDocName)">
+
+                        <img class="media-object"
+                             ng-src="/cs/idcplg?IdcService=GET_FILE&amp;dID={{result.dID}}&Rendition=rendition:T"> </a>
+
+                </div>
+
+                <div class="media-body">
+                    <h4 class="media-heading"><a href="#" ng-click="loadDocInfo(result.dID,result.dDocName)">{{result.dDocTitle}}</a>
+                    </h4>
+                    <small>{{result.dDocLastModifier}} - {{result.dDocLastModifiedDate}}</small>
+                    <p>{{result.dFormat}}</p>
+
+                    <p>{{result.srfDocSnippet}}</p>
+
+                </div>
+
+            </div>
+
         </div>
 
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">Filter Results</div>
+                <div class="panel-body">
+                    <p>...</p>
+                </div>
 
-        <div ng-repeat="result in SearchResults" class="media">
-		
-
-
-        <a class="pull-left" href="#">    <img class="media-object" ng-src="/cs/Idcplg?IdcService=GET_FILE&amp;dID={{result.dID}}&amp;rendition=thumbnail">  </a>
-
-        <div class="media-body">
-          <h4 class="media-heading">{{result.dDocTitle}}</h4>
-          <small>{{result.dDocLastModifier}} - {{result.dDocLastModifiedDate}}</small>
-          <p>{{result.dFormat}}</p>
-          <p>{{result.srfDocSnippet}}</p>
-      
-        </div>
-      
-
-<!-- 
-        	<pre>
-        		{{result | json}}
-        	</pre> -->
+                <!-- List group -->
+                <ul class="list-group">
+                    <li class="list-group-item">Released after: {{searchFilter.dIndate.after}}</li>
+                    <li class="list-group-item">Released before: {{searchFilter.dIndate.before}}</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consectetur ac</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+            </div>
         </div>
 
-    </div>
-
-
-
-    <pre>
-    	{{qs | json }}
-
-    </pre>
 
 </div>

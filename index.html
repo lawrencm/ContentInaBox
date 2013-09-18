@@ -5,30 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="/assets/styles/bootstrap.css" rel="stylesheet" media="screen">
+
+    <!--Libs-->
     <link rel="stylesheet" href="/assets/js/pdfjs/css/bootstrap-pdf-viewer.css">
     <link rel="stylesheet" href="/assets/js/pdfjs/lib/font-awesome/css/font-awesome.css">
-
     <script src="/assets/js/pdfjs/lib/pdf.js"></script>
     <script src="/assets/js/pdfjs/js/bootstrap-pdf-viewer.js"></script>
-
     <script src="//code.jquery.com/jquery.js"></script>
     <script type="text/javascript" src="/assets/js/xml2json.min.js"></script>
-
     <script type="text/javascript" src="angular.js"></script>
+
+    <!--Configuration Files-->
+    <script type="text/javascript" src="config/application.js"></script>
+    <script type="text/javascript" src="config/metadata.js"></script>
+    <script type="text/javascript" src="config/actions.js"></script>
+
+
+
+    <!--modules-->
+    <script type="text/javascript" src="modules/dragNDropModule.js"></script>
+    <script type="text/javascript" src="modules/metadataModule.js"></script>
+    <script type="text/javascript" src="modules/actionsModule.js"></script>
+    <script type="text/javascript" src="modules/formModule.js"></script>
+
     <script type="text/javascript" src="app.js"></script>
 
-    <style type="text/css">
-        body{
-            margin-top:60px;
-        }
+    <script type="text/javascript" src="modules/browseModule.js"></script>
 
-        .fluid-container{
-            margin-right: auto;
-            margin-left: auto;
-            padding:0 50px;
-            width:100%;
-        }
-    </style>
+
 
 
 
@@ -51,6 +55,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav">
+                    <li><a href="#" ng-click="loadPage('browse')">Browse</a></li>
+
                     <li><a href="#" ng-click="loadPage('search')">Search</a></li>
                     <li><a href="#" ng-click="loadPage('docInfo')">Doc Info</a></li>
             <li><a href="#">Link</a></li>
@@ -98,12 +104,12 @@
 </div>
 
 
-<div >
-    <div >
-        <div data-dataId="{{someData}}" data-draggable="true">This is a draggable div</div>
-        <div data-droppable="" >Drop something here which is draggable</div>
-    </div>
-</div>
+<!--<div >-->
+    <!--<div >-->
+        <!--<div data-dataId="{{someData}}" data-draggable="true">This is a draggable div</div>-->
+        <!--<div data-droppable="" >Drop something here which is draggable</div>-->
+    <!--</div>-->
+<!--</div>-->
 
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->

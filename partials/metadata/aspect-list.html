@@ -1,0 +1,12 @@
+<ul class="nav nav-pills nav-stacked" >
+
+  <li ng-repeat="aspect in addableAspects" class="active" data-id="{{aspect.id}}" data-draggable="true" data-target="metadata-panel" >  	  
+    <a  href="#">{{aspect.label}}</a>
+ </li>
+
+  <li ng-repeat="aspect in nonAddableAspects" class="info unselectable" data-id="{{aspect.id}}" draggable="false">  	  
+    <a  href="#"  draggable="false" class="unselectable">{{aspect.label}}</a>
+ </li>
+
+
+ </ul>

@@ -1,0 +1,40 @@
+
+
+    <div class="form-group" >
+
+
+        <label for="{{ field.id }}" class="col-lg-2 control-label">
+            <span ng-if="mdConfig.icon" ng-class="mdConfig.icon"></span>
+            {{mdConfig.label}}
+        </label>
+
+        <div class="col-lg-10" ng-switch="mdConfig.edit.widget">
+
+
+
+            <!--</div>-->
+            <select class="form-control"
+                    ng-switch-when="select"
+                    placeholder="{{ mdConfig.placeholder }}"
+                    name="field.id"
+                    id="{{ field.id }}"
+                    ng-model="editObject[field.id]"
+                    name="field.id"
+                    ng-options="option for option in mdConfig.edit.getOptions()">
+            </select>
+
+            <!--default or text element-->
+            <input  ng-switch-default="text"
+                    class="form-control"
+                    ng-pattern="getPattern()"
+                    ng-required="mdConfig.required || false"
+                    placeholder="{{ mdConfig.placeholder }}"
+                    ng-model="editObject[field.id]"
+                    name="field.id"
+                    id="{{ field.id }}">
+            </input>
+
+
+
+        </div>
+    </div>

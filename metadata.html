@@ -1,0 +1,74 @@
+<!DOCTYPE html >
+<html ng-app="appConfig">
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="/assets/styles/bootstrap.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="/assets/js/pdfjs/css/bootstrap-pdf-viewer.css">
+    <link rel="stylesheet" href="/assets/js/pdfjs/lib/font-awesome/css/font-awesome.css">
+
+    <!--libs-->
+    <script src="/assets/js/pdfjs/lib/pdf.js"></script>
+    <script src="/assets/js/pdfjs/js/bootstrap-pdf-viewer.js"></script>
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script type="text/javascript" src="/assets/js/xml2json.min.js"></script>
+    <script type="text/javascript" src="angular.js"></script>
+
+    <!--modules-->
+    <script type="text/javascript" src="modules/formModule.js"></script>
+    <script type="text/javascript" src="config/metadata.js"></script>
+
+
+
+</head>
+<body  ng-controller="appConfigCtrl">
+
+<div class="container">
+    <h1>Form Generator</h1>
+    <div folder-form>
+        <form class="form-horizontal" role="form">
+
+        <div ng-repeat="aspect in aspects">
+
+            <fieldset ng-init="ac = getAspectConfig(aspect)">
+                <legend>{{ ac.label}}</legend>
+                <div ng-repeat="field in ac.fields">
+
+                    <div field-info="/partials/forms/field-edit-widget.html"></div>
+                </div>
+
+            </fieldset>
+
+
+
+            <!--&lt;!&ndash;<div ng-repeat="field in getAspectConfig(aspect)">&ndash;&gt;-->
+            <!--&lt;!&ndash;&ndash;&gt;-->
+
+
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        </div>
+
+
+
+        </form>
+    </div>
+
+
+        <pre>
+            {{ editObject | json }}
+
+            {{  editObjectMaster | json}}
+
+
+            <!--{{ metadataConfig | json }}-->
+        </pre>
+
+
+    </div>
+</div>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/assets/js/bootstrap.js"></script>
+
+</body>
+</html>
