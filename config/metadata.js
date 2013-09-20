@@ -23,7 +23,7 @@ appConfig.factory('$ucmMetaUtils', function ($rootScope, $ucmapi) {
          * request does not give back all the required info. :(
          */
 
-        $rootScope.optionLists = {};
+        
 
         xmlDoc = $.parseXML(data);
         $xml = $(xmlDoc);
@@ -40,6 +40,14 @@ appConfig.factory('$ucmMetaUtils', function ($rootScope, $ucmapi) {
         //broadcast a message to all listeneres
         $rootScope.$broadcast('optionlists:loaded');
 
+
+
+        $rootScope.viewValues = {};
+
+
+
+
+
     });
 
 
@@ -47,6 +55,7 @@ appConfig.factory('$ucmMetaUtils', function ($rootScope, $ucmapi) {
      * doesnt return anything yet
      */
     return {
+        
 
 
     };
@@ -62,6 +71,16 @@ appConfig.controller("appConfigCtrl", function ($scope, $rootScope, $ucmMetaUtil
      *
      *
      */
+     $rootScope.optionLists = {};
+     //initialise the rootscope context object
+     $rootScope.context = {};
+     $rootScope.context.LocalData = {};// the cuurent content item with edited data
+     $rootScope.context.LocalDataMaster = {}; // the current content items data as pesisted on the server
+
+     $rootScope.context.folderData = {}; // the current folders data transient    
+     $rootScope.context.folderDataMaster = {}; // the current folders data as persisted on the server
+
+
 
     $rootScope.metadataConfig = {
         fields: {
@@ -73,11 +92,34 @@ appConfig.controller("appConfigCtrl", function ($scope, $rootScope, $ucmMetaUtil
                     widget: 'text'
                 }
             },
+            dDocType: {
+                type: 'string',
+                label: 'Document Type',
+                required: true,
+                edit: {
+                    widget: 'select',
+                    optionList:"DocTypes"
+                }                
+            },
             dDocName: {
                 type: 'string',
                 label: 'Document Name',
                 required: true
             },
+            dDocAuthor: {
+                type: 'string',
+                label: 'Author',
+                required: true,
+                edit: {
+                    view:{
+                        viewName:"docAuthors",
+                        resultSetName:"Users",
+                        labelKey:"dFullName",
+                        valueKey:"dName"
+                        }, // view name, resultset name
+                    widget: 'select_edit',
+                }
+            },            
             dDocTitle: {
                 type: 'string',
                 label: 'Title',
@@ -93,6 +135,16 @@ appConfig.controller("appConfigCtrl", function ($scope, $rootScope, $ucmMetaUtil
                     maxlength: 10
                 }
             },
+            xCMDescription:{
+                type: 'string',
+                label: "Description",
+                required: false
+            },
+            xComments:{
+                type: 'string',
+                label: "Tags",
+                required: false
+            },            
             xContractName: {
                 type: 'string',
                 label: "Contract Name",
@@ -144,7 +196,7 @@ appConfig.controller("appConfigCtrl", function ($scope, $rootScope, $ucmMetaUtil
                 label: "Folder Name",
                 placeholder: "Please enter a name for the folder",
                 required:true,
-                pattern:/^[\w.-]+$/,
+                pattern:/^[\w.-\\ ]+$/,
                 edit: {
                     widget: 'text'
                 }
@@ -157,9 +209,34 @@ appConfig.controller("appConfigCtrl", function ($scope, $rootScope, $ucmMetaUtil
                 required:true,
 
                 edit: {
-                    widget: 'text'
+                    view:{
+                        viewName:"docAuthors",
+                        resultSetName:"Users",
+                        labelKey:"dFullName",
+                        valueKey:"dName"
+                        }, // view name, resultset name
+                    widget: 'select_edit',
                 }
             }, //text
+             dDocAccount: {
+                type: "text",
+                label: "Account",
+                placeholder:"please select an account",
+                edit: {
+                    widget: 'select_edit',
+                    optionList:"Accounts"
+                }                
+            },
+            dSecurityGroup: {
+                type: "text",
+                label: "Security Group",
+                placeholder: "What security group does the folder belong to",
+
+                edit: {
+                    widget: 'select',
+                    optionList:"SecurityGroups"
+                }
+            },
             fSecurityGroup: {
                 type: "text",
                 label: "Security Group",
@@ -167,14 +244,7 @@ appConfig.controller("appConfigCtrl", function ($scope, $rootScope, $ucmMetaUtil
 
                 edit: {
                     widget: 'select',
-                    getOptions: function () {
-                        if (typeof $rootScope.optionLists != "undefined" && "SecurityGroups" in $rootScope.optionLists) {
-                            return $rootScope.optionLists.SecurityGroups;
-                        } else {
-                            return [];
-                        }
-
-                    }
+                    optionList:"SecurityGroups"
                 }
             },
             fClbraUserList: {
@@ -192,7 +262,10 @@ appConfig.controller("appConfigCtrl", function ($scope, $rootScope, $ucmMetaUtil
             fPromptForMetadata: {
                 type: "boolean",
                 label: "Prompt for Metadata"
-            }
+            },
+
+
+
         },
         aspects: [
 
@@ -215,6 +288,20 @@ appConfig.controller("appConfigCtrl", function ($scope, $rootScope, $ucmMetaUtil
                 ],
                 isGroup: true
             },
+
+            {   id: "defaultFolderMd",
+                label: "Default Information",
+                fields: [
+                    {id: 'dDocType', config: {}},
+                    {id: 'dDocTitle', config: {}},
+                    {id: 'xCMDescription', config: {}},
+                    {id: 'xComments', config: {}},
+                    {id: 'dSecurityGroup', config: {}},
+                    {id: 'dDocAccount', config: {}},
+                    {id: 'dDocAuthor', config: {}}                    
+                ],
+                isGroup: true
+            },      
 
             {
                 id: "contractInformation",

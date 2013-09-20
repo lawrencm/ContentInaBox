@@ -27,7 +27,7 @@
 <div class="container">
     <h1>Form Generator</h1>
     <div folder-form>
-        <form class="form-horizontal" role="form">
+        <form class="form-horizontal" role="form" name="form">
 
         <div ng-repeat="aspect in aspects">
 
@@ -49,16 +49,17 @@
             <!--&lt;!&ndash;</div>&ndash;&gt;-->
         </div>
 
-
+        <input type="submit" />
 
         </form>
     </div>
 
 
         <pre>
-            {{ editObject | json }}
+            {{  viewValues | json    }}
+            {{ context.LocalData | json }}
 
-            {{  editObjectMaster | json}}
+
 
 
             <!--{{ metadataConfig | json }}-->

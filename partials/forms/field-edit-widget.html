@@ -16,25 +16,49 @@
             <select class="form-control"
                     ng-switch-when="select"
                     placeholder="{{ mdConfig.placeholder }}"
-                    name="field.id"
-                    id="{{ field.id }}"
-                    ng-model="editObject[field.id]"
-                    name="field.id"
-                    ng-options="option for option in mdConfig.edit.getOptions()">
+                    ng-model="context.LocalData[field.id]"
+                    ng-options="option.value as option.label for option in options">
             </select>
+
+            <div ng-switch-when="select_edit" class="form-inline">
+
+     {{ mdConfig.edit.getOptions() |  json}}
+
+
+           <input  style="width:49.5%"
+                    class="form-control"
+                    ng-required="mdConfig.required || false"
+                    placeholder="{{ mdConfig.placeholder }}"
+                    ng-model="context.LocalData[field.id]">
+            </input>
+
+            <select 
+                    class="form-control"
+                    style="width:50%"
+                    placeholder="{{ mdConfig.placeholder }}"
+                    ng-model="context.LocalData[field.id]"
+                    ng-options="option.value as option.label for option in options">
+            </select> 
+            </div>
+
+
+
 
             <!--default or text element-->
             <input  ng-switch-default="text"
+             ng-pattern="getPattern()"
                     class="form-control"
-                    ng-pattern="getPattern()"
                     ng-required="mdConfig.required || false"
                     placeholder="{{ mdConfig.placeholder }}"
-                    ng-model="editObject[field.id]"
-                    name="field.id"
-                    id="{{ field.id }}">
+                    ng-model="context.LocalData[field.id]"
+                    id="11"
+                    name="22">
             </input>
 
-
-
+            {{ form.$error | json}}
+            {{ form.$valid | json}}
+            {{ form.$error.required | json}}
+          <span ng-show="form.fFolderName.$error">Tell us your email.</span>
+x
         </div>
     </div>
